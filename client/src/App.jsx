@@ -56,7 +56,7 @@ export default function App() {
                 </a>
                 <span className="text-slate-400">×</span>
                 <a href="https://stellar.org" target="_blank" rel="noopener noreferrer" title="Stellar" className="inline-flex" aria-label="Stellar">
-                  <img src="/brands/stellar.svg" alt="Stellar" className="h-10 md:h-12 w-auto object-contain dark:invert min-w-0"/>
+                  <img src="/brands/stellar.png" alt="Stellar" className="h-10 md:h-12 w-auto object-contain min-w-0"/>
                 </a>
                 <span className="text-slate-400">×</span>
                 <a href="https://telluscoop.com" target="_blank" rel="noopener noreferrer" title="Tellus Cooperative" className="inline-flex" aria-label="Tellus Cooperative">
