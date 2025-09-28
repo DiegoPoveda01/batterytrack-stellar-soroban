@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { api } from '../services/api'
+import Button from '../components/ui/Button'
 
 export default function Wallet() {
   const [pub, setPub] = useState('GDEMOUSER')
@@ -34,8 +35,8 @@ export default function Wallet() {
         <input value={pub} onChange={e=>setPub(e.target.value)} className="w-full px-3 py-2 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" />
       </div>
       <div className="flex gap-2">
-        <button onClick={refresh} disabled={busy} className="px-3 py-2 rounded bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 text-sm">Ver balance</button>
-        <button onClick={simulateReturn} disabled={busy} className="px-3 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50 text-sm">Simular devolución +1 GREEN</button>
+        <Button variant="secondary" onClick={refresh} disabled={busy} loading={busy}>Ver balance</Button>
+        <Button onClick={simulateReturn} disabled={busy} loading={busy}>Simular devolución +1 GREEN</Button>
       </div>
       {bal && (
         <div className="p-4 rounded border border-slate-200 dark:border-slate-700 text-sm">

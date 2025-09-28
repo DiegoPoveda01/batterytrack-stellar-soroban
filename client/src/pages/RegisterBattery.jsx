@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../services/api'
+import Button from '../components/ui/Button'
 
 export default function RegisterBattery() {
   const nav = useNavigate()
@@ -52,9 +53,7 @@ export default function RegisterBattery() {
           <input type="date" name="fecha" value={form.fecha} onChange={onChange} className="w-full px-3 py-2 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" />
         </div>
         {error && <div className="text-red-600 text-sm">{error}</div>}
-        <button disabled={busy} className="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50">
-          {busy ? 'Registrando...' : 'Registrar'}
-        </button>
+        <Button loading={busy} disabled={busy}>Registrar</Button>
       </form>
     </div>
   )

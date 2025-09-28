@@ -8,5 +8,15 @@
 }
 
 body {
-  @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100;
+  @apply bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+::selection {
+  background: rgba(167, 243, 208, 0.6); /* emerald-200/60 */
+  color: #0f172a; /* slate-900 */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root { scroll-behavior: smooth; }
 }
