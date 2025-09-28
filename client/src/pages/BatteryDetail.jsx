@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { api } from '../services/api'
 import Button from '../components/ui/Button'
 import Badge from '../components/ui/Badge'
+import Timeline from '../components/Timeline'
 
 const STATES = ['fabricacion', 'distribucion', 'venta', 'recoleccion', 'reciclaje']
 
@@ -70,15 +71,8 @@ export default function BatteryDetail() {
           <div className="text-sm text-slate-500">TX: {item.txId} {item.onchain ? '' : '(simulado)'}</div>
         </div>
         <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
-          <div className="font-semibold mb-2">Ciclo de vida</div>
-          <ol className="space-y-2">
-            {STATES.map(s => (
-              <li key={s} className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full ${item.estado === s ? 'bg-emerald-600' : 'bg-slate-400'}`}></span>
-                <span className={item.estado === s ? 'font-medium' : ''}>{s}</span>
-              </li>
-            ))}
-          </ol>
+          <div className="font-semibold mb-3">Ciclo de vida</div>
+          <Timeline stages={STATES} active={item.estado} />
           <div className="mt-4 flex items-center gap-3">
             <Button variant="ghost" onClick={goBack} disabled={busy || item.estado === STATES[0]} loading={busy && prev===item.estado}>
               {busy ? 'Actualizando...' : `Volver a ${prev}`}
