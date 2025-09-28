@@ -21,13 +21,16 @@ Demo full-stack: React + Tailwind + Express + Stellar/Soroban.
 - Crea/Registra un lote de pilas → se emite un token (simulado por defecto).
 - Visualiza y avanza su estado a lo largo del ciclo de vida.
 - Devuelve pilas y recibe incentivos GREEN/USDC (simulados).
-- Revisa dashboard + historial.
+- Revisa dashboard + historial, filtra/busca por estado/fabricante/ID.
+- Copia el token rápidamente desde la tarjeta o el detalle (tooltip de confirmación).
+- Cambia entre tema claro/oscuro; elimina registros si lo necesitas.
 
 ## Arquitectura
 
 - Frontend (client/): React + Vite + TailwindCSS
   - Páginas: Dashboard, Registrar, Detalle, Wallet
   - Cliente REST minimal para consumir API
+  - UI moderna: timeline por etapa con colores y tooltips, breadcrumb, toasts, modal de confirmación, botón “copiar token”, búsqueda y filtros
   - Proxy a `/api` → backend local
 - Backend (server/): Node.js + Express
   - Rutas: baterías, estados, eventos, wallet simulada
@@ -59,8 +62,10 @@ Demo full-stack: React + Tailwind + Express + Stellar/Soroban.
 - `GET /api/batteries/:id` → `{ ok, data: BatteryDTO }`
 - `POST /api/batteries/:id/estado` → `{ ok, data: { battery: BatteryDTO, event } }`
 - `GET /api/batteries/events/all` → `{ ok, data: EventDTO[], meta: { count } }`
+- `DELETE /api/batteries/:id` → `{ ok, data: { id, deleted: true, event } }`
 - `POST /api/wallet/simulate-return` → `{ ok, data: { balance, event } }`
 - `GET /api/wallet/balance/:pub` → `{ ok, data: balance }`
+- `GET /health` → `{ ok: true, ts }`
 
 BatteryDTO (resumen):
 - `id`
@@ -101,6 +106,16 @@ npm run dev
 Invoke-WebRequest -UseBasicParsing http://localhost:4000/health | Select-Object -ExpandProperty Content
 ```
 
+### Modo “preview” (producción local)
+Para previsualizar la build del frontend con el backend:
+
+```powershell
+# Construir el frontend y lanzar servidor + preview
+npm --prefix client run build; npm run start
+```
+
+Por defecto, el backend corre en `:4000` y el preview en el puerto que asigne Vite.
+
 ### Modo on-chain (opcional, testnet real)
 - Copia `server/.env.example` a `server/.env` y configura:
 ```
@@ -110,6 +125,20 @@ ISSUER_SECRET=SA... # Cuenta fondeada en testnet
 SOROBAN_RPC=https://rpc-futurenet.stellar.org
 ```
 - Reinicia el backend. Nota: Este demo usa una emisión “NFT-like” simple; para Soroban real, compila y despliega el contrato, y ajusta llamadas RPC.
+
+Variables útiles:
+- `PORT` (server): cambia el puerto del backend (default 4000).
+- `VITE_API_PORT` (client): cambia el puerto de destino del proxy `/api` y `/health` en desarrollo.
+
+### Solución de problemas (Windows)
+- “No puedo acceder a /health” o el puerto 4000 está ocupado:
+
+```powershell
+# Ver y matar procesos usando el puerto 4000
+$p=(Get-NetTCPConnection -LocalPort 4000 -ErrorAction SilentlyContinue).OwningProcess; if($p){ Stop-Process -Id $p -Force }
+```
+
+- Cambiar puertos si hubiera conflicto: define `PORT=4010` para el backend y `VITE_API_PORT=4010` para el frontend (en variables de entorno) y vuelve a ejecutar `npm run dev`.
 
 ---
 
