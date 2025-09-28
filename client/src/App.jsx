@@ -20,7 +20,7 @@ export default function App() {
           <header className="border-b border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur supports-[backdrop-filter]:bg-white/50">
             <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6">
               <NavLink to="/" title="Inicio" className="flex items-center gap-2">
-                <img src="/brands/byesiduos.svg" alt="ByeSiduos" className="h-8"/>
+                <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-8 w-auto object-contain rounded"/>
                 <span className="sr-only">Inicio</span>
               </NavLink>
               <nav className="flex gap-1 text-sm ml-auto items-center">
@@ -44,9 +44,19 @@ export default function App() {
             </div>
           </main>
           <footer className="border-t border-slate-200/80 dark:border-slate-800 text-xs text-slate-500">
-            <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-              <span>ByeSiduos — Demo Stellar/Soroban</span>
-              <span className="text-slate-400">© {new Date().getFullYear()}</span>
+            <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                <span>ByeSiduos — Demo Stellar/Soroban</span>
+                <span className="text-slate-400">•</span>
+                <span className="text-slate-400">© {new Date().getFullYear()}</span>
+              </div>
+              <div className="flex items-center flex-wrap gap-4">
+                <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-8 md:h-9 object-contain shrink-0 rounded"/>
+                <span className="text-slate-400">×</span>
+                <img src="/brands/stellar.svg" alt="Stellar" className="h-6 md:h-8 object-contain shrink-0 dark:invert"/>
+                <span className="text-slate-400">×</span>
+                <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-6 md:h-8 object-contain shrink-0"/>
+              </div>
             </div>
           </footer>
         </div>

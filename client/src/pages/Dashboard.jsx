@@ -9,17 +9,7 @@ import { useToast } from '../components/ui/Toast'
 import CopyButton from '../components/ui/CopyButton'
 import { stateLabel } from '../utils/labels'
 
-function LogoRow() {
-  return (
-    <div className="flex flex-wrap items-center gap-6">
-  <img src="/brands/byesiduos.svg" alt="ByeSiduos" className="h-10"/>
-      <span className="text-slate-400">×</span>
-      <img src="/brands/stellar.svg" alt="Stellar" className="h-8 opacity-80"/>
-      <span className="text-slate-400">×</span>
-      <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-8 opacity-80"/>
-    </div>
-  )
-}
+// LogoRow eliminado: ahora los logos viven en el footer para mejor consistencia
 
 export default function Dashboard() {
   const [items, setItems] = useState([])
@@ -66,7 +56,6 @@ export default function Dashboard() {
             <h1 className="text-3xl font-extrabold tracking-tight">ByeSiduos — Trazabilidad de pilas con incentivos verdes</h1>
             <p className="text-slate-600 dark:text-slate-300 mt-2">Registra lotes, sigue su ciclo de vida y recompensa la devolución.</p>
           </div>
-          <LogoRow />
         </div>
         <div className="mt-4">
           <Link to="/registrar">
