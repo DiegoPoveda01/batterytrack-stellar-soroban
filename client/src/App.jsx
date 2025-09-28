@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard'
 import RegisterBattery from './pages/RegisterBattery'
 import BatteryDetail from './pages/BatteryDetail'
 import Wallet from './pages/Wallet'
+import Breadcrumb from './components/Breadcrumb'
 
 export default function App() {
   const [ready, setReady] = useState(false)
@@ -25,6 +26,7 @@ export default function App() {
           </div>
         </header>
         <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
+          <Breadcrumb />
           <Routes>
             <Route path="/" element={<Dashboard/>} />
             <Route path="/registrar" element={<RegisterBattery/>} />
