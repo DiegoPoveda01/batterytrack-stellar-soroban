@@ -4,6 +4,7 @@ import { api } from '../services/api'
 import Button from '../components/ui/Button'
 import { Input } from '../components/ui/Input'
 import { Select } from '../components/ui/Select'
+import DateField from '../components/ui/DateField'
 import { useToast } from '../components/ui/Toast'
 
 export default function RegisterBattery() {
@@ -47,7 +48,7 @@ export default function RegisterBattery() {
           <option>CR2032</option>
         </Select>
         <Input label="Fabricante" name="fabricante" value={form.fabricante} onChange={onChange} placeholder="Ej: ACME" />
-        <Input label="Fecha" type="date" name="fecha" value={form.fecha} onChange={onChange} />
+  <DateField label="Fecha" name="fecha" value={form.fecha} onChange={onChange} />
         {error && <div className="text-red-600 text-sm">{error}</div>}
         <Button loading={busy} disabled={busy}>Registrar</Button>
       </form>
