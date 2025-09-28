@@ -113,25 +113,6 @@ SOROBAN_RPC=https://rpc-futurenet.stellar.org
 
 ---
 
-## Subir a GitHub (guía)
-
-1) Inicializa git y crea el repo remoto en GitHub (vacío):
-```powershell
-git init
-git add .
-git commit -m "feat: BatteryTrack demo Stellar/Soroban (frontend+backend)"
-```
-2) Conecta el remoto y push (reemplaza TU_USUARIO y NOMBRE_REPO):
-```powershell
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/NOMBRE_REPO.git
-git push -u origin main
-```
-
-> Consejo hackatón: añade screenshots/GIFs del flujo (Dashboard, Registro, Detalle, Wallet) y enlázalos aquí para impresionar al jurado.
-
----
-
 ## Roadmap rápido (post-hackatón)
 - Integración real con Soroban: contrato, eventos on-chain, y parsing de XDRs
 - Persistencia real (Postgres/Mongo) y filtros/paginación
