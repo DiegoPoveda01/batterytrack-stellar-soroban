@@ -1,0 +1,17 @@
+{
+  "name": "batterytrack-stellar-soroban",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BatteryTrack: tokenización y trazabilidad de pilas con Stellar/Soroban — frontend React + backend Express",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "start": "concurrently \"npm:start:server\" \"npm:start:client\"",
+    "start:server": "npm --prefix server start",
+    "start:client": "npm --prefix client run preview"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
