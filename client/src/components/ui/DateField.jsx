@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 
-export default function DateField({ label, error, className = '', ...props }) {
+export default function DateField({ label, helper, error, className = '', maxToday = false, ...props }) {
   const ref = useRef(null)
   const openPicker = (e) => {
     e.preventDefault()
@@ -9,6 +9,11 @@ export default function DateField({ label, error, className = '', ...props }) {
     if (typeof el.showPicker === 'function') el.showPicker()
     else el.focus()
   }
+  const today = useMemo(() => new Date().toISOString().slice(0,10), [])
+  const maxAttr = props.max ?? (maxToday ? today : undefined)
+  const value = props.value
+  const isFuture = maxAttr && value && value > maxAttr
+  const hasError = !!error || isFuture
   return (
     <label className="block">
       {label && <div className="text-sm mb-1 text-slate-600 dark:text-slate-300">{label}</div>}
@@ -18,9 +23,11 @@ export default function DateField({ label, error, className = '', ...props }) {
           type="date"
           className={[
             'w-full pr-11 px-3 py-2 rounded-lg border bg-white dark:bg-slate-900',
-            error ? 'border-rose-400 dark:border-rose-500' : 'border-slate-300 dark:border-slate-700',
+            hasError ? 'border-rose-400 dark:border-rose-500' : 'border-slate-300 dark:border-slate-700',
             className,
           ].join(' ')}
+          max={maxAttr}
+          aria-invalid={hasError || undefined}
           {...props}
         />
         <button
@@ -35,7 +42,10 @@ export default function DateField({ label, error, className = '', ...props }) {
           </svg>
         </button>
       </div>
-      {error && <div className="text-xs text-rose-600 mt-1">{error}</div>}
+      {helper && !hasError && <div className="text-xs text-slate-500 mt-1">{helper}</div>}
+      {hasError && (
+        <div className="text-xs text-rose-600 mt-1">{error || 'No se permiten fechas futuras'}</div>
+      )}
     </label>
   )
 }

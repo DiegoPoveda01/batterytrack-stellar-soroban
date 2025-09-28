@@ -25,6 +25,8 @@ export default function RegisterBattery() {
     try {
       if (!form.fabricante) throw new Error('fabricante requerido')
       if (!form.fecha) throw new Error('fecha requerida')
+      const today = new Date().toISOString().slice(0,10)
+      if (form.fecha > today) throw new Error('fecha futura no permitida')
       const res = await api.registerBattery(form)
       push({ type: 'success', title: 'Registrado', message: `Se creó la pila ${res.item.id}` })
       nav(`/battery/${res.item.id}`)
@@ -48,7 +50,7 @@ export default function RegisterBattery() {
           <option>CR2032</option>
         </Select>
         <Input label="Fabricante" name="fabricante" value={form.fabricante} onChange={onChange} placeholder="Ej: ACME" />
-  <DateField label="Fecha" name="fecha" value={form.fecha} onChange={onChange} />
+  <DateField label="Fecha" name="fecha" value={form.fecha} onChange={onChange} maxToday helper="No se permiten fechas futuras" />
         {error && <div className="text-red-600 text-sm">{error}</div>}
         <Button loading={busy} disabled={busy}>Registrar</Button>
       </form>
