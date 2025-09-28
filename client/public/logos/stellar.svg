@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40" role="img" aria-label="Stellar logo (generic)">
+  <circle cx="20" cy="20" r="18" fill="#000"/>
+  <path d="M12 20a8 8 0 1 1 16 0" stroke="#fff" stroke-width="3" fill="none"/>
+  <path d="M10 24l20-8M10 28l20-8" stroke="#fff" stroke-width="2"/>
+  <text x="40" y="26" font-family="Inter, Segoe UI, system-ui, -apple-system, sans-serif" font-size="16" fill="#0f172a">Stellar</text>
+</svg>

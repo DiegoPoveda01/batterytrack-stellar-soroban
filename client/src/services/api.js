@@ -43,6 +43,10 @@ export const api = {
     const r = await j('POST', `${BASE}/api/batteries/${id}/estado`, { estado })
     return { item: fromDtoBattery(r.data?.battery), event: r.data?.event }
   },
+  async deleteBattery(id) {
+    const r = await j('DELETE', `${BASE}/api/batteries/${id}`)
+    return r.data
+  },
   async getBalance(pub) {
     const r = await j('GET', `${BASE}/api/wallet/balance/${pub}`)
     return r.data

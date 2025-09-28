@@ -79,4 +79,14 @@ router.get('/:id', (req, res) => {
   res.json(ok(formatBattery(item)));
 });
 
+router.delete('/:id', async (req, res) => {
+  const id = req.params.id;
+  const item = batteries.get(id);
+  if (!item) return res.status(404).json(fail('No encontrado', 'NOT_FOUND'));
+  batteries.delete(id);
+  const evt = await recordSorobanEvent({ type: 'DELETE', payload: { id } });
+  events.push(evt);
+  res.json(ok({ id, deleted: true, event: formatEvent(evt) }));
+});
+
 export default router;
