@@ -31,7 +31,7 @@ export default function App() {
           </Routes>
         </main>
         <footer className="border-t border-slate-200 dark:border-slate-700 text-xs text-slate-500 py-4 text-center">
-          Demo Stellar/Soroban • Ideatón
+          Demo Stellar/Soroban
         </footer>
       </div>
     </BrowserRouter>

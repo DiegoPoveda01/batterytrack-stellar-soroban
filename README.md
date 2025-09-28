@@ -4,7 +4,7 @@
 
 Tokeniza pilas y lotes como activos NFT/semi-fungibles y registra eventos de su ciclo de vida (fabricación → distribución → venta → recolección → reciclaje). Gamifica la devolución con incentivos verdes (GREEN/USDC) y audita todo en un backend listo para Soroban.
 
-Demo full-stack para Hackatón: React + Tailwind + Express + Stellar/Soroban.
+Demo full-stack: React + Tailwind + Express + Stellar/Soroban.
 
 </div>
 
@@ -113,7 +113,7 @@ SOROBAN_RPC=https://rpc-futurenet.stellar.org
 
 ---
 
-## Roadmap rápido (post-hackatón)
+## Roadmap rápido
 - Integración real con Soroban: contrato, eventos on-chain, y parsing de XDRs
 - Persistencia real (Postgres/Mongo) y filtros/paginación
 - Integración con wallet (Freighter) en el frontend
