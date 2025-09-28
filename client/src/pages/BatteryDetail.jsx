@@ -9,6 +9,7 @@ export default function BatteryDetail() {
   const [item, setItem] = useState(null)
   const [next, setNext] = useState('')
   const [busy, setBusy] = useState(false)
+  const [prev, setPrev] = useState('')
 
   useEffect(() => {
     let ignore = false
@@ -22,6 +23,7 @@ export default function BatteryDetail() {
     if (!item) return
     const idx = STATES.indexOf(item.estado)
     setNext(STATES[Math.min(idx + 1, STATES.length - 1)])
+    setPrev(STATES[Math.max(idx - 1, 0)])
   }, [item])
 
   async function advance() {
@@ -29,6 +31,19 @@ export default function BatteryDetail() {
     setBusy(true)
     try {
       const res = await api.updateState(item.id, next)
+      setItem(res.item)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function goBack() {
+    if (!item) return
+    // Si ya está en el primer estado, no hacemos nada
+    if (item.estado === STATES[0]) return
+    setBusy(true)
+    try {
+      const res = await api.updateState(item.id, prev)
       setItem(res.item)
     } finally {
       setBusy(false)
@@ -62,9 +77,14 @@ export default function BatteryDetail() {
               </li>
             ))}
           </ol>
-          <button onClick={advance} disabled={busy || item.estado === 'reciclaje'} className="mt-4 px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 text-sm">
-            {busy ? 'Actualizando...' : item.estado === 'reciclaje' ? 'Completado' : `Avanzar a ${next}`}
-          </button>
+          <div className="mt-4 flex items-center gap-3">
+            <button onClick={goBack} disabled={busy || item.estado === STATES[0]} className="px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-sm disabled:opacity-50">
+              {busy ? 'Actualizando...' : `Volver a ${prev}`}
+            </button>
+            <button onClick={advance} disabled={busy || item.estado === 'reciclaje'} className="px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 text-sm">
+              {busy ? 'Actualizando...' : item.estado === 'reciclaje' ? 'Completado' : `Avanzar a ${next}`}
+            </button>
+          </div>
         </div>
       </div>
 
