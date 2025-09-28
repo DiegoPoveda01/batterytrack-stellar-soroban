@@ -12,7 +12,7 @@ export default function DateField({ label, error, className = '', ...props }) {
   return (
     <label className="block">
       {label && <div className="text-sm mb-1 text-slate-600 dark:text-slate-300">{label}</div>}
-      <div className="relative">
+      <div className="relative has-custom-picker">
         <input
           ref={ref}
           type="date"

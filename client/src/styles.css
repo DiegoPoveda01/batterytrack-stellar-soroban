@@ -27,6 +27,11 @@ html.dark input[type="date"]::-webkit-calendar-picker-indicator {
 }
 input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
 
+/* Cuando usamos DateField con icono propio, ocultamos el indicador nativo */
+.has-custom-picker input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root { scroll-behavior: smooth; }
 }
