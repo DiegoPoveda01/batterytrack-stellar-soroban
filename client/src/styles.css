@@ -17,6 +17,16 @@ body {
   color: #0f172a; /* slate-900 */
 }
 
+/* Asegura que el icono del calendario en inputs de fecha sea visible en ambos temas */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+  opacity: 0.75;
+}
+html.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+
 @media (prefers-reduced-motion: no-preference) {
   :root { scroll-behavior: smooth; }
 }
