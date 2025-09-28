@@ -50,12 +50,12 @@ export default function App() {
                 <span className="text-slate-400">•</span>
                 <span className="text-slate-400">© {new Date().getFullYear()}</span>
               </div>
-              <div className="flex items-center flex-wrap gap-4">
-                <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-8 md:h-9 object-contain shrink-0 rounded"/>
+              <div className="flex items-center flex-wrap gap-6">
+                <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-10 md:h-12 w-auto object-contain shrink-0 rounded"/>
                 <span className="text-slate-400">×</span>
-                <img src="/brands/stellar.svg" alt="Stellar" className="h-6 md:h-8 object-contain shrink-0 dark:invert"/>
+                <img src="/brands/stellar.svg" alt="Stellar" className="h-10 md:h-12 object-contain shrink-0 dark:invert"/>
                 <span className="text-slate-400">×</span>
-                <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-6 md:h-8 object-contain shrink-0"/>
+                <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="w-40 md:w-56 h-auto object-contain shrink-0"/>
               </div>
             </div>
           </footer>
