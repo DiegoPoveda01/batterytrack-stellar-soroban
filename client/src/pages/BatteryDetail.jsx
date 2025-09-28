@@ -4,6 +4,7 @@ import { api } from '../services/api'
 import Button from '../components/ui/Button'
 import Badge from '../components/ui/Badge'
 import Timeline from '../components/Timeline'
+import Skeleton from '../components/ui/Skeleton'
 
 const STATES = ['fabricacion', 'distribucion', 'venta', 'recoleccion', 'reciclaje']
 
@@ -53,7 +54,35 @@ export default function BatteryDetail() {
     }
   }
 
-  if (!item) return <p className="text-slate-500">Cargando...</p>
+  if (!item) return (
+    <div className="space-y-4">
+      <Skeleton className="h-8 w-60" />
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <Skeleton className="h-4 w-40" />
+          <Skeleton className="h-4 w-60 mt-2" />
+          <Skeleton className="h-4 w-52 mt-2" />
+        </div>
+        <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-8 w-full mt-3" />
+        </div>
+      </div>
+    </div>
+  )
+
+  // Construir timestamps por etapa desde el historial
+  const timestampsByStage = (item.history || []).reduce((acc, h) => {
+    acc[h.estado] = h.ts || acc[h.estado]
+    return acc
+  }, {})
+  const colors = {
+    fabricacion: '#64748b', // slate-500
+    distribucion: '#3b82f6', // blue-500
+    venta: '#f43f5e', // rose-500
+    recoleccion: '#6366f1', // indigo-500
+    reciclaje: '#10b981', // emerald-500
+  }
 
   return (
     <div className="space-y-4">
@@ -78,7 +107,7 @@ export default function BatteryDetail() {
         </div>
         <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
           <div className="font-semibold mb-3">Ciclo de vida</div>
-          <Timeline stages={STATES} active={item.estado} />
+          <Timeline stages={STATES} active={item.estado} timestampsByStage={timestampsByStage} colors={colors} />
           <div className="mt-4 flex items-center gap-3">
             <Button variant="ghost" onClick={goBack} disabled={busy || item.estado === STATES[0]} loading={busy && prev===item.estado}>
               {busy ? 'Actualizando...' : `Volver a ${prev}`}

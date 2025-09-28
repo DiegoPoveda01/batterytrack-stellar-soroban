@@ -7,6 +7,7 @@ import Wallet from './pages/Wallet'
 import Breadcrumb from './components/Breadcrumb'
 import { ToastProvider } from './components/ui/Toast'
 import ThemeToggle from './components/ThemeToggle'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   const [ready, setReady] = useState(false)
@@ -38,6 +39,7 @@ export default function App() {
                 <Route path="/registrar" element={<RegisterBattery/>} />
                 <Route path="/battery/:id" element={<BatteryDetail/>} />
                 <Route path="/wallet" element={<Wallet/>} />
+                <Route path="*" element={<NotFound/>} />
               </Routes>
             </div>
           </main>
