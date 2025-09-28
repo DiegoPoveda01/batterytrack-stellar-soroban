@@ -12,11 +12,11 @@ import { stateLabel } from '../utils/labels'
 function LogoRow() {
   return (
     <div className="flex flex-wrap items-center gap-6">
-      <img src="/logos/app-logo.svg" alt="BatteryTrack" className="h-10"/>
+  <img src="/brands/byesiduos.svg" alt="ByeSiduos" className="h-10"/>
       <span className="text-slate-400">×</span>
-  <img src="/logos/stellar_logo.avif" alt="Stellar" className="h-8 opacity-80"/>
+      <img src="/brands/stellar.svg" alt="Stellar" className="h-8 opacity-80"/>
       <span className="text-slate-400">×</span>
-      <img src="/logos/tellus.svg" alt="Tellus" className="h-8 opacity-80"/>
+      <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-8 opacity-80"/>
     </div>
   )
 }
@@ -63,7 +63,7 @@ export default function Dashboard() {
       <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-tr from-emerald-50 to-emerald-100/50 dark:from-slate-900 dark:to-slate-900 p-6 mb-6">
         <div className="flex items-start justify-between gap-6">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight">Trazabilidad de pilas con incentivos verdes</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight">ByeSiduos — Trazabilidad de pilas con incentivos verdes</h1>
             <p className="text-slate-600 dark:text-slate-300 mt-2">Registra lotes, sigue su ciclo de vida y recompensa la devolución.</p>
           </div>
           <LogoRow />

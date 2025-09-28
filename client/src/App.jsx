@@ -20,7 +20,7 @@ export default function App() {
           <header className="border-b border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur supports-[backdrop-filter]:bg-white/50">
             <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6">
               <NavLink to="/" title="Inicio" className="flex items-center gap-2">
-                <img src="/logos/app-logo.svg" alt="BatteryTrack" className="h-8"/>
+                <img src="/brands/byesiduos.svg" alt="ByeSiduos" className="h-8"/>
                 <span className="sr-only">Inicio</span>
               </NavLink>
               <nav className="flex gap-1 text-sm ml-auto items-center">
@@ -45,7 +45,7 @@ export default function App() {
           </main>
           <footer className="border-t border-slate-200/80 dark:border-slate-800 text-xs text-slate-500">
             <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-              <span>Demo Stellar/Soroban</span>
+              <span>ByeSiduos — Demo Stellar/Soroban</span>
               <span className="text-slate-400">© {new Date().getFullYear()}</span>
             </div>
           </footer>

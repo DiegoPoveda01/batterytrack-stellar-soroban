@@ -1,6 +1,6 @@
 <div align="center">
 
-# BatteryTrack ♻️⚡ — Trazabilidad verde con Stellar + Soroban
+# ByeSiduos ♻️⚡ — Trazabilidad verde con Stellar + Soroban
 
 Tokeniza pilas y lotes como activos NFT/semi-fungibles y registra eventos de su ciclo de vida (fabricación → distribución → venta → recolección → reciclaje). Gamifica la devolución con incentivos verdes (GREEN/USDC) y audita todo en un backend listo para Soroban.
 

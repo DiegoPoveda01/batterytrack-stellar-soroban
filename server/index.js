@@ -22,7 +22,7 @@ app.set('json spaces', 2);
 app.get('/', (_req, res) => {
   res.set('Content-Type', 'text/html; charset=utf-8');
   res.send(`
-    <h1>BatteryTrack API</h1>
+  <h1>ByeSiduos API</h1>
     <p>Servidor en marcha. Endpoints útiles:</p>
     <ul>
       <li><a href="/health">/health</a> — estado del servidor</li>
