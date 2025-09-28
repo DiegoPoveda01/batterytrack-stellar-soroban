@@ -2,12 +2,17 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import batteryRoutes from './routes/batteries.js';
 import walletRoutes from './routes/wallet.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:5173', credentials: true }));
 app.use(express.json());
@@ -34,6 +39,9 @@ app.get('/', (_req, res) => {
 app.get('/health', (_req, res) => {
   res.json({ ok: true, ts: new Date().toISOString() });
 });
+
+// Serve the real Stellar logo from project root without copying files
+// (assets públicos servidos por el frontend en client/public)
 
 app.use('/api/batteries', batteryRoutes);
 app.use('/api/wallet', walletRoutes);

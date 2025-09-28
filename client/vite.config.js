@@ -8,11 +8,11 @@ export default defineConfig({
     strictPort: false,
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',
+        target: `http://localhost:${process.env.VITE_API_PORT || 4000}`,
         changeOrigin: true,
       },
       '/health': {
-        target: 'http://localhost:4000',
+        target: `http://localhost:${process.env.VITE_API_PORT || 4000}`,
         changeOrigin: true,
       }
     }

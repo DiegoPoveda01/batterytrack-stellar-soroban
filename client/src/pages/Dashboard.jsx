@@ -7,7 +7,7 @@ function LogoRow() {
     <div className="flex flex-wrap items-center gap-6">
       <img src="/logos/app-logo.svg" alt="BatteryTrack" className="h-10"/>
       <span className="text-slate-400">×</span>
-      <img src="/logos/stellar.svg" alt="Stellar" className="h-8 opacity-80"/>
+  <img src="/logos/stellar_logo.avif" alt="Stellar" className="h-8 opacity-80"/>
       <span className="text-slate-400">×</span>
       <img src="/logos/tellus.svg" alt="Tellus" className="h-8 opacity-80"/>
     </div>
