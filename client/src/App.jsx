@@ -60,7 +60,8 @@ export default function App() {
                 </a>
                 <span className="text-slate-400">×</span>
                 <a href="https://telluscoop.com" target="_blank" rel="noopener noreferrer" title="Tellus Cooperative" className="inline-flex" aria-label="Tellus Cooperative">
-                  <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-10 md:h-12 w-auto object-contain min-w-0"/>
+                  <img src="/brands/telluscoop-light.svg" alt="Tellus Cooperative" className="h-10 md:h-12 w-auto object-contain min-w-0 dark:hidden"/>
+                  <img src="/brands/telluscoop-dark.svg" alt="Tellus Cooperative" className="h-10 md:h-12 w-auto object-contain min-w-0 hidden dark:inline"/>
                 </a>
               </div>
             </div>
