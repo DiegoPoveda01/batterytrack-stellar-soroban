@@ -14,7 +14,9 @@ export default function App() {
       <div className="min-h-screen flex flex-col">
         <header className="border-b border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 backdrop-blur">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6">
-            <img src="/logos/app-logo.svg" alt="BatteryTrack" className="h-8"/>
+            <NavLink to="/" title="Inicio">
+              <img src="/logos/app-logo.svg" alt="BatteryTrack" className="h-8 cursor-pointer"/>
+            </NavLink>
             <nav className="flex gap-4 text-sm">
               <NavLink className={({isActive})=>isActive? 'text-emerald-600 font-semibold' : 'hover:text-emerald-600'} to="/">Dashboard</NavLink>
               <NavLink className={({isActive})=>isActive? 'text-emerald-600 font-semibold' : 'hover:text-emerald-600'} to="/registrar">Registrar</NavLink>
