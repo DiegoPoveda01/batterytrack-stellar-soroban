@@ -6,6 +6,8 @@ import Badge from '../components/ui/Badge'
 import Modal from '../components/ui/Modal'
 import Skeleton from '../components/ui/Skeleton'
 import { useToast } from '../components/ui/Toast'
+import CopyButton from '../components/ui/CopyButton'
+import { stateLabel } from '../utils/labels'
 
 function LogoRow() {
   return (
@@ -122,11 +124,15 @@ export default function Dashboard() {
                   b.estado === 'venta' ? 'rose' :
                   b.estado === 'recoleccion' ? 'blue' :
                   'green'
-                }>{b.estado}</Badge>
+                }>{stateLabel(b.estado)}</Badge>
               </div>
               <div className="mt-2 text-sm text-slate-600 dark:text-slate-300">{b.tipo} • {b.fabricante}</div>
               <div className="mt-1 text-xs text-slate-500">{new Date(b.fecha).toLocaleString()}</div>
-              <div className="mt-2 text-xs text-slate-500 truncate">Token: {b.token}</div>
+              <div className="mt-2 text-xs text-slate-500 truncate flex items-center gap-2">
+                <span className="shrink-0">Token:</span>
+                <span className="truncate">{b.token}</span>
+                <CopyButton text={b.token} />
+              </div>
               <div className="mt-4 flex items-center justify-between gap-3">
                 <Link to={`/battery/${b.id}`}>
                   <Button variant="ghost">Ver detalle</Button>

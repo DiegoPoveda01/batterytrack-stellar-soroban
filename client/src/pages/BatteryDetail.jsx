@@ -5,6 +5,8 @@ import Button from '../components/ui/Button'
 import Badge from '../components/ui/Badge'
 import Timeline from '../components/Timeline'
 import Skeleton from '../components/ui/Skeleton'
+import { stateLabel } from '../utils/labels'
+import CopyButton from '../components/ui/CopyButton'
 
 const STATES = ['fabricacion', 'distribucion', 'venta', 'recoleccion', 'reciclaje']
 
@@ -94,7 +96,7 @@ export default function BatteryDetail() {
           item.estado === 'venta' ? 'rose' :
           item.estado === 'recoleccion' ? 'blue' :
           'green'
-        }>{item.estado}</Badge>
+        }>{stateLabel(item.estado)}</Badge>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -102,7 +104,11 @@ export default function BatteryDetail() {
           <div><span className="text-slate-500 text-sm">Tipo:</span> {item.tipo}</div>
           <div><span className="text-slate-500 text-sm">Fabricante:</span> {item.fabricante}</div>
           <div><span className="text-slate-500 text-sm">Fecha:</span> {new Date(item.fecha).toLocaleString()}</div>
-          <div className="text-sm text-slate-500 truncate">Token: {item.token}</div>
+          <div className="text-sm text-slate-500 truncate flex items-center gap-2">
+            <span className="shrink-0">Token:</span>
+            <span className="truncate">{item.token}</span>
+            <CopyButton text={item.token} />
+          </div>
           <div className="text-sm text-slate-500">TX: {item.txId} {item.onchain ? '' : '(simulado)'}</div>
         </div>
         <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
