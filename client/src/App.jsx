@@ -6,6 +6,7 @@ import BatteryDetail from './pages/BatteryDetail'
 import Wallet from './pages/Wallet'
 import Breadcrumb from './components/Breadcrumb'
 import { ToastProvider } from './components/ui/Toast'
+import ThemeToggle from './components/ThemeToggle'
 
 export default function App() {
   const [ready, setReady] = useState(false)
@@ -21,10 +22,11 @@ export default function App() {
                 <img src="/logos/app-logo.svg" alt="BatteryTrack" className="h-8"/>
                 <span className="sr-only">Inicio</span>
               </NavLink>
-              <nav className="flex gap-1 text-sm ml-auto">
+              <nav className="flex gap-1 text-sm ml-auto items-center">
                 <NavLink className={({isActive})=>`px-3 py-2 rounded-md ${isActive? 'text-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-300' : 'text-slate-600 hover:text-emerald-700 dark:text-slate-300'}`} to="/">Dashboard</NavLink>
                 <NavLink className={({isActive})=>`px-3 py-2 rounded-md ${isActive? 'text-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-300' : 'text-slate-600 hover:text-emerald-700 dark:text-slate-300'}`} to="/registrar">Registrar</NavLink>
                 <NavLink className={({isActive})=>`px-3 py-2 rounded-md ${isActive? 'text-emerald-700 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-300' : 'text-slate-600 hover:text-emerald-700 dark:text-slate-300'}`} to="/wallet">Wallet</NavLink>
+                <div className="ml-2"><ThemeToggle /></div>
               </nav>
             </div>
           </header>

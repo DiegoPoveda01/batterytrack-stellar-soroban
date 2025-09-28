@@ -25,6 +25,9 @@ export default function Dashboard() {
   const [deleting, setDeleting] = useState(null)
   const navigate = useNavigate()
   const { push } = useToast()
+  const [q, setQ] = useState('')
+  const [estado, setEstado] = useState('')
+  const [fabricante, setFabricante] = useState('')
 
   useEffect(() => {
     let ignore = false
@@ -70,6 +73,20 @@ export default function Dashboard() {
         </div>
       </section>
 
+      {/* filtros */}
+      <div className="mb-5 grid gap-3 md:grid-cols-3">
+        <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Buscar por ID o token" className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"/>
+        <select value={estado} onChange={e=>setEstado(e.target.value)} className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+          <option value="">Todos los estados</option>
+          <option value="fabricacion">fabricacion</option>
+          <option value="distribucion">distribucion</option>
+          <option value="venta">venta</option>
+          <option value="recoleccion">recoleccion</option>
+          <option value="reciclaje">reciclaje</option>
+        </select>
+        <input value={fabricante} onChange={e=>setFabricante(e.target.value)} placeholder="Filtrar por fabricante" className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"/>
+      </div>
+
       {loading ? (
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
           {Array.from({length:6}).map((_,i)=> (
@@ -88,14 +105,24 @@ export default function Dashboard() {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-          {items.map(b => (
+          {items
+            .filter(b => !q || b.id.toLowerCase().includes(q.toLowerCase()) || (b.token||'').toLowerCase().includes(q.toLowerCase()))
+            .filter(b => !estado || b.estado === estado)
+            .filter(b => !fabricante || (b.fabricante||'').toLowerCase().includes(fabricante.toLowerCase()))
+            .map(b => (
             <div key={b.id} className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 hover:shadow transition">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="text-sm text-slate-500">ID</div>
                   <div className="font-semibold text-lg tracking-tight">{b.id}</div>
                 </div>
-                <Badge>{b.estado}</Badge>
+                <Badge color={
+                  b.estado === 'fabricacion' ? 'slate' :
+                  b.estado === 'distribucion' ? 'blue' :
+                  b.estado === 'venta' ? 'rose' :
+                  b.estado === 'recoleccion' ? 'blue' :
+                  'green'
+                }>{b.estado}</Badge>
               </div>
               <div className="mt-2 text-sm text-slate-600 dark:text-slate-300">{b.tipo} • {b.fabricante}</div>
               <div className="mt-1 text-xs text-slate-500">{new Date(b.fecha).toLocaleString()}</div>

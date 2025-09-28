@@ -59,7 +59,13 @@ export default function BatteryDetail() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold tracking-tight">Pila {item.id}</h2>
-        <Badge>{item.estado}</Badge>
+        <Badge color={
+          item.estado === 'fabricacion' ? 'slate' :
+          item.estado === 'distribucion' ? 'blue' :
+          item.estado === 'venta' ? 'rose' :
+          item.estado === 'recoleccion' ? 'blue' :
+          'green'
+        }>{item.estado}</Badge>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
