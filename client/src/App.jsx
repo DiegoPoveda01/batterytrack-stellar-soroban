@@ -20,7 +20,7 @@ export default function App() {
           <header className="border-b border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur supports-[backdrop-filter]:bg-white/50">
             <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6">
               <NavLink to="/" title="Inicio" className="flex items-center gap-2">
-                <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-8 w-auto object-contain rounded"/>
+                <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-10 md:h-12 w-auto object-contain rounded"/>
                 <span className="sr-only">Inicio</span>
               </NavLink>
               <nav className="flex gap-1 text-sm ml-auto items-center">
@@ -52,15 +52,21 @@ export default function App() {
               </div>
               <div className="flex items-center flex-wrap gap-6">
                 <a href="/" title="ByeSiduos" className="inline-flex" aria-label="ByeSiduos">
-                  <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-10 md:h-12 w-auto object-contain rounded min-w-0"/>
+                  <div className="h-12 md:h-14 px-2 rounded-md flex items-center justify-center overflow-hidden ring-1 ring-slate-200/60 dark:ring-slate-800/60 bg-white/80 dark:bg-slate-900/30">
+                    <img src="/brands/byesiduos.jpeg" alt="ByeSiduos" className="h-full w-auto object-contain rounded min-w-0"/>
+                  </div>
                 </a>
                 <span className="text-slate-400">×</span>
                 <a href="https://stellar.org" target="_blank" rel="noopener noreferrer" title="Stellar" className="inline-flex" aria-label="Stellar">
-                  <img src="/brands/stellar.png" alt="Stellar" className="h-10 md:h-12 w-auto object-contain min-w-0"/>
+                  <div className="h-12 md:h-14 px-2 rounded-md flex items-center justify-center overflow-hidden ring-1 ring-slate-200/60 dark:ring-slate-800/60 bg-white/80 dark:bg-white">
+                    <img src="/brands/stellar.png" alt="Stellar" className="h-full w-auto object-contain min-w-0"/>
+                  </div>
                 </a>
                 <span className="text-slate-400">×</span>
                 <a href="https://telluscoop.com" target="_blank" rel="noopener noreferrer" title="Tellus Cooperative" className="inline-flex" aria-label="Tellus Cooperative">
-                  <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-10 md:h-12 w-auto object-contain min-w-0"/>
+                  <div className="h-12 md:h-14 px-2 rounded-md flex items-center justify-center overflow-hidden ring-1 ring-slate-200/60 dark:ring-slate-800/60 bg-slate-900 dark:bg-transparent">
+                    <img src="/brands/telluscoop.svg" alt="Tellus Cooperative" className="h-full w-auto object-contain min-w-0"/>
+                  </div>
                 </a>
               </div>
             </div>
