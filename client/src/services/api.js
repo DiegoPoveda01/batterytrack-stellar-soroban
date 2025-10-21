@@ -1,4 +1,4 @@
-const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '') // remove trailing slash
+const BASE = 'https://batterytrack-stellar-soroban-production.up.railway.app' // hardcoded for demo
 
 async function j(method, url, body) {
   const res = await fetch(url, {
