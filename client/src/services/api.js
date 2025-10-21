@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL || '' // proxied to server in vite.config.js
+const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '') // remove trailing slash
 
 async function j(method, url, body) {
   const res = await fetch(url, {
